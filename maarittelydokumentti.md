@@ -20,7 +20,7 @@ Tarkoituksena on päästä mahdollisimman lähelle kunkin algoritmin teoreettist
 
 Wikipedia -linkit algoritmien kuvauksiin:
 
-[Kruskal](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)
-[Prim](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
-[Boruvka](https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm)
-[Reverse-delete](https://en.wikipedia.org/wiki/Reverse-delete_algorithm)
+[Kruskal](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)<br/>
+[Prim](https://en.wikipedia.org/wiki/Prim%27s_algorithm)<br/>
+[Boruvka](https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm)<br/>
+[Reverse-delete](https://en.wikipedia.org/wiki/Reverse-delete_algorithm)</br>
