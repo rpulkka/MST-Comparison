@@ -31,16 +31,16 @@ Ensi viikolla jatkuu näiden ongelmien ratkaiseminen ja Boruvkan algoritmin tote
 
 Ensimmäinen testiverkko, lähtötilanne:
 
-(images/testgraph1.png)
+![GitHub Logo](images/testgraph1.png)
 
 Ensimmäinen testiverkko, lopputilanne:
 
-(images/testgraph1res.png)
+![GitHub Logo](images/testgraph1res.png)
 
 Toinen testiverkko, lähtötilanne:
 
-(images/testgraph2.png)
+![GitHub Logo](images/testgraph2.png)
 
 Toinen testiverkko, lopputilanne:
 
-(images/testgraph2res.png)
+![GitHub Logo](images/testgraph2res.png)
