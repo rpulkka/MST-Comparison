@@ -33,14 +33,13 @@ Ensimmäinen testiverkko, lähtötilanne:
 
 ![GitHub Logo](images/testgraph1.png)
 
-Ensimmäinen testiverkko, lopputilanne:
-
+Ensimmäinen testiverkko, lopputilanne (kaarten summa: 33):
 ![GitHub Logo](images/testgraph1res.png)
 
 Toinen testiverkko, lähtötilanne:
 
 ![GitHub Logo](images/testgraph2.png)
 
-Toinen testiverkko, lopputilanne:
+Toinen testiverkko, lopputilanne (kaarten summa: 27):
 
 ![GitHub Logo](images/testgraph2res.png)
