@@ -10,16 +10,24 @@ muassa keon toteuttamista ja Union-find rakenteen toteuttamista.
 <h2>Ratkaistava ongelma</h2>
 
 Harjoitustyö vertailee pienintä virittävää puuta laskevien algoritmien tehokkuutta. Ohjelma tarkistaa, että
-algoritmit saavat saman vastauksen ja laskee vastauksen laskemiseen kuluneet ajat vertailun vuoksi. Voisi siis
+algoritmit saavat saman vastauksen ja laskee vastauksen laskemiseen kuluneet ajat vertailun vuoksi. Samalla 
+vastauksella tarkoitetaan tässä tapauksessa sitä, että algoritmit laskevat pienimmän virittävän puun kaarten 
+summan, jolloin kaikilla tulisi olla sama vastaus, vaikka ne päätyisivätkin erilaisiin puihin. Voisi siis
 sanoa, että harjoitustyön tehtävä on selvittää, mikä algoritmeista on tehokkain ja toisaalta selviää myös, mikä on
 kätevin algoritmi toteuttaa. Tietenkin molempiin asioihin vaikuttaa se, kuinka hyvin algoritmit on toteutettu 
 ja tämä tulee ottaa vertailun loppupäätelmissä huomioon.
 
 <h2>Syötteet</h2>
 
-Tarkoituksena on käyttää satunnaisuutta sisältäviä, ohjelman itsensä generoimia verkkoja. Algoritmit tulevat
-ratkaisemaan saman verkon pienimmän virittävän puun kerrallaan, jotta niitä voidaan vertailla. Tulen määrittelemään
-verkkojen suuruusluokan siten, että algoritmien tehokkuuserot tulevat esille.
+Puut syötetään ohjelmaan .csv -muotoisina tiedostoina, jossa jokainen rivi sisältää yhden kaaren tiedot. Jokaisesta
+kaaresta tallennetaan alkusolmu, loppusolmu ja pituus, kaikki kokonaislukuina ja ne erotetaan tiedostossa pilkulla.
+Esim. rivi "1,2,3" merkitsee kaarta, joka alkaa solmusta 1, päättyy solmuun 2 ja on pituudeltaan 3. Tavoitteena
+olisi, että tiedostomuotoiset syötteet mahdollistaisivat myös muiden tekemien (esim. internetistä ladattujen)
+verkkojen ratkaisemisen. Ohjelmaan voitaisiin myös mahdollisesti lisätä verkkoja generoiva aliohjelma, joka 
+generoisi sopivia verkkoja jokseenkin satunnaisesti. Algoritmit tulevat ratkaisemaan saman verkon pienimmän
+virittävän puun kerrallaan, jotta niitä voidaan vertailla. Tulen määrittelemään vertailussa käytettävien verkkojen
+suuruusluokan siten, että algoritmien tehokkuuserot tulevat esille, mutta toki ohjelmaa voi kokeilla monenlaisilla
+syötteillä.
 
 <h2>Tavoitteet aikavaativuudessa</h2>
 
