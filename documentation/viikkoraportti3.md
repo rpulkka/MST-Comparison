@@ -2,10 +2,11 @@
 
 Työmäärä: 11h
 
-Tällä viikolla yritin toteuttaa Boruvkan algoritmin. Monen yrityksen jälkeen se vaikutti toimivalle pienten
-esimerkkiverkkojen kanssa. Loppuviikosta kuitenkin tein simppelöidyn verkkogeneraattorin GraphCreator -luokkaan.
-Verkkojen koon kasvaessa noin sadan kieppeille, havaitsin että Boruvkan algoritmi antaa hieman muista poikkeavan
-tuloksen. Monien tulostusten jälkeen löysin kohdan, missä Boruvka valitsee toisin kuin muut algoritmit, mutta siinä
+Tällä viikolla yritin toteuttaa Boruvkan algoritmin sekä tein jonkin verran refaktorointia. Monen yrityksen jälkeen 
+se vaikutti toimivalle pienten esimerkkiverkkojen kanssa. Loppuviikosta kuitenkin tein simppelöidyn 
+verkkogeneraattorin GraphCreator -luokkaan. Verkkojen koon kasvaessa noin sadan kieppeille, havaitsin että Boruvkan 
+algoritmi antaa hieman muista poikkeavan tuloksen. Monien tulostusten jälkeen löysin kohdan, missä Boruvka valitsee 
+toisin kuin muut algoritmit, mutta siinä
 vaiheessa se vaikuttaa toimivan kuitenkin loogisesti. En osaa vielä sanoa, miksi algoritmi tuottaa väärän tuloksen 
 enkä oikeastaan tiedä kuinka saisin sen selville, olen jo yrittänyt selvittää asiaa tulostuksilla, mutta tuntien 
 jälkeen löysin poikkeavan kohdan sen toiminnassa, mutta en varsinaista virhettä, sillä siinäkin kohtaa se näyttää
