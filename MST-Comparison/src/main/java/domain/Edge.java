@@ -1,5 +1,5 @@
 
-package com.domain;
+package domain;
 
 /**
  * An abstraction of the edges between the vertices. 

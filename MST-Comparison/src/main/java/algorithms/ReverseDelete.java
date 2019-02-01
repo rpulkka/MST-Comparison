@@ -1,6 +1,7 @@
 
-package com.domain;
+package algorithms;
 
+import domain.UnionFind;
 import java.util.Collections;
 import java.util.PriorityQueue;
 

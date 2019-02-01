@@ -1,5 +1,7 @@
 
-package com.domain;
+package data_management;
+
+import java.util.HashSet;
 
 /**
  * The Graph Data class stores the information about the edges of the graph
@@ -11,20 +13,28 @@ package com.domain;
  */
 public class GraphData {
     private int[] source, destination, value;
-    private int counter;
+    private HashSet<Integer> vertexSet;
+    private int numberOfVertices;
+    private int numberOfEdges;
 
     public GraphData(int[] source, int[] destination, int[] value) {
+        this.vertexSet = new HashSet<Integer>();
         this.source = source;
         this.destination = destination;
         this.value = value;
-        counter = 0;
+        numberOfEdges = 0;
     }
     
     public void update(int source, int destination, int value) {
-        this.source[counter] = source;
-        this.destination[counter] = destination;
-        this.value[counter] = value;
-        counter++;
+        this.source[numberOfEdges] = source;
+        this.destination[numberOfEdges] = destination;
+        this.value[numberOfEdges] = value;
+        vertexSet.add(source);
+        vertexSet.add(destination);
+        if(numberOfVertices != vertexSet.size()) {
+            numberOfVertices = vertexSet.size();
+        }
+        numberOfEdges++;
     }
 
     public int getSourceOf(int index) {
@@ -52,6 +62,14 @@ public class GraphData {
     }
 
     public int getCounter() {
-        return counter;
+        return numberOfEdges;
+    }
+
+    public int getNumberOfVertices() {
+        return numberOfVertices;
+    }
+
+    public int getNumberOfEdges() {
+        return numberOfEdges;
     }
 }

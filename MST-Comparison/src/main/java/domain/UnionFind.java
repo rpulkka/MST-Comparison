@@ -1,5 +1,5 @@
 
-package com.domain;
+package domain;
 
 /**
  * Union-Find structure is implemented in this class. It offers valuable data 
@@ -7,20 +7,21 @@ package com.domain;
  * same tree. 
  */
 public class UnionFind {
-    private static int[] parent;
-    private static int[] size;
+    private int[] parent;
+    private int[] size;
     
     public UnionFind(int size) {
-        parent = new int[size];
-        UnionFind.size = new int[size];
+        this.parent = new int[size + 1];
+        this.size = new int[size + 1];
         
-        for (int i = 1; i < size; i++) {
+        for (int i = 1; i <= size; i++) {
             this.parent[i] = i;
             this.size[i] = 1;
         }
     }
     
-    public static void addConnection(int a, int b) {
+    public int addConnection(int a, int b) {
+        int finalParent = -1;
         if (sameParent(a, b) == false) {
             a = parent(a);
             b = parent(b);
@@ -31,24 +32,26 @@ public class UnionFind {
             }
             parent[b] = a;
             size[a] += size[b];
+            finalParent = a;
         }
+        return finalParent;
     }
 
-    public static boolean sameParent(int a, int b) {
+    public boolean sameParent(int a, int b) {
         if (parent(a) == parent(b)) {
             return true;
         }
         return false;
     }
 
-    public static int parent(int x) {
+    public int parent(int x) {
         while (x != parent[x]) {
             x = parent[x];
         }
         return x;
     }
     
-    public static int getGroupSize(int i) {
+    public int getGroupSize(int i) {
         return size[i];
     }
 }

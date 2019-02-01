@@ -33,6 +33,14 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
+                <configuration>
+                    <targetClasses>
+                        <param>com.domain*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>domain*</param>
+                    </targetTests>
+                </configuration>
                 <version>1.1.8</version>
             </plugin>
         </plugins>

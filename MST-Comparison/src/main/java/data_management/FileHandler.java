@@ -1,5 +1,5 @@
 
-package com.domain;
+package data_management;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
