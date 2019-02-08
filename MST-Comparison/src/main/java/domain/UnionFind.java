@@ -54,4 +54,8 @@ public class UnionFind {
     public int getGroupSize(int i) {
         return size[i];
     }
+    
+    public void setGroupSize(int i, int size) {
+        this.size[i] = size;
+    }
 }

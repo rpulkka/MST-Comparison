@@ -42,4 +42,30 @@ public class Edge implements Comparable<Edge> {
     public void setLength(int length) {
         this.length = length;
     }
+    
+    public boolean isSame(int start2, int end2, int length2) {
+        if(start == start2 && end == end2 && length == length2) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean isInversion(int start2, int end2, int length2) {
+        if(start == end2 && end == start2 && length == length2) {
+            return true;
+        }
+        return false;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        Edge e = (Edge) o;
+        if(start == e.getStart() && end == e.getEnd() && length == e.getLength()) {
+            return true;
+        }
+        if(start == e.getEnd() && end == e.getStart() && length == e.getLength()) {
+            return true;
+        }
+        return false;
+    }
 }

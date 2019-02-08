@@ -11,24 +11,17 @@ import java.util.PriorityQueue;
  */
 public class Prim {
     int numberOfEdges;
+    PriorityQueue<Edge>[] edgesFromStart;
     
     public Prim(int numberOfEdges) {
         this.numberOfEdges = numberOfEdges;
-    }
-    
-    public int execute(GraphData graphData) {
         //An array of priority queues, the index represents the source vertex
         //of the edge.
-        PriorityQueue<Edge>[] edgesFromStart = new PriorityQueue[numberOfEdges];
-        
-        for (int i = 0; i < edgesFromStart.length; i++) {
-            edgesFromStart[i] = new PriorityQueue<Edge>();
-        }
-        
-        for(int i = 0; i <= graphData.getCounter(); i++) {
-            edgesFromStart[graphData.getSourceOf(i)].add(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)));
-            edgesFromStart[graphData.getDestinationOf(i)].add(new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i)));
-        }
+        this.edgesFromStart = new PriorityQueue[numberOfEdges];
+    }
+    
+    public int execute(GraphData graphData) {  
+        initEdges(graphData);
         
         //List of visited vertices.
         ArrayList<Integer> visited = new ArrayList<Integer>();
@@ -65,6 +58,17 @@ public class Prim {
                     priorityQueue.add(e);
                 }
             }
+        }
+    }
+    
+    public void initEdges(GraphData graphData) {
+        for (int i = 0; i < edgesFromStart.length; i++) {
+            edgesFromStart[i] = new PriorityQueue<Edge>();
+        }
+        
+        for(int i = 0; i < graphData.getCounter(); i++) {
+            edgesFromStart[graphData.getSourceOf(i)].add(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)));
+            edgesFromStart[graphData.getDestinationOf(i)].add(new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i)));
         }
     }
 }

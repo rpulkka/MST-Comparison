@@ -3,6 +3,7 @@ package algorithms;
 
 import data_management.GraphData;
 import algorithms.Prim;
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,7 +19,7 @@ public class PrimTest {
     @Before
     public void setUp() {
         prim = new Prim(10000);
-        graphData = new GraphData(new int[1000], new int[1000], new int[1000]);
+        graphData = new GraphData(new int[99999999], new int[99999999], new int[99999999]);
     }
     
     @Test

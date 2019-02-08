@@ -1,6 +1,7 @@
 
 package data_management;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -16,6 +17,7 @@ public class GraphData {
     private HashSet<Integer> vertexSet;
     private int numberOfVertices;
     private int numberOfEdges;
+    private int maxVertice;
 
     public GraphData(int[] source, int[] destination, int[] value) {
         this.vertexSet = new HashSet<Integer>();
@@ -23,6 +25,7 @@ public class GraphData {
         this.destination = destination;
         this.value = value;
         numberOfEdges = 0;
+        maxVertice = 0;
     }
     
     public void update(int source, int destination, int value) {
@@ -35,6 +38,12 @@ public class GraphData {
             numberOfVertices = vertexSet.size();
         }
         numberOfEdges++;
+        if(source > maxVertice) {
+            maxVertice = source;
+        }
+        if(destination > maxVertice) {
+            maxVertice = destination;
+        }
     }
 
     public int getSourceOf(int index) {
@@ -71,5 +80,9 @@ public class GraphData {
 
     public int getNumberOfEdges() {
         return numberOfEdges;
+    }
+
+    public int getMaxVertice() {
+        return maxVertice;
     }
 }

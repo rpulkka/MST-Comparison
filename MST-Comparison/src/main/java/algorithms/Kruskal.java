@@ -13,15 +13,12 @@ public class Kruskal {
     private UnionFind unionFind;
     private PriorityQueue<Edge> edges = new PriorityQueue<Edge>();
     
-    public Kruskal(int numOfVertices) {
-        unionFind = new UnionFind(numOfVertices);
+    public Kruskal(int maxVertice) {
+        unionFind = new UnionFind(maxVertice);
     }
     
     public int execute(GraphData graphData) {
-        //Add every edge to the priority queue
-        for(int i = 0; i < graphData.getCounter(); i++) {
-            edges.add(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)));
-        }
+        initEdges(graphData);
         
         int sumOfEdges = 0;
         while (!edges.isEmpty()) {
@@ -30,14 +27,20 @@ public class Kruskal {
             //already included in the tree. If yes, discard it, else the 
             //new vertex will be added to the tree and the sum will be 
             //incremented by the length of the edge.
+            
             if (unionFind.sameParent(edge.getStart(), edge.getEnd())) {
                 continue;
             }
             unionFind.addConnection(edge.getStart(), edge.getEnd());
             sumOfEdges += edge.getLength();
-            System.out.println("s " + edge.getStart() + " e " + edge.getEnd() + " l " + edge.getLength());
         }
-        System.out.println("");
         return sumOfEdges;
+    }
+    
+    public void initEdges(GraphData graphData) {
+        //Add every edge to the priority queue
+        for(int i = 0; i < graphData.getCounter(); i++) {
+            edges.add(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)));
+        }
     }
 }
