@@ -14,6 +14,6 @@ Itse toteutetut tietorakenteet, joilla korvataan Javan kirjastoja, löytyvät pa
 <p/>
 'domain' on hieman sekalainen pakkaus algoritmeja tukevia luokkia ja abstraktiota, sen voisi ehkä jakaa osiin, 
 joista yksi voisi olla vaikkapa 'support' pakkaus, missä olisi algoritmeja palvelevia apu-ominaisuuksia.
-</p>
+<p/>
 'main' pakkaus sisältää ohjelman pääluokan ja samalla käyttöliittymän. Se käyttää muiden pakkausten luokkia.
 
