@@ -9,6 +9,9 @@ tämänhetkisistä testiverkoista on generoitu ohjelmaan sisältyvällä GraphCr
 kehitysvaiheessa, jotkut pienet verkot olen puolestaan laatinut itse. Algoritmit toimivat manuaalisen testauksen 
 nojalla oikein kaikissa tähän asti laadituissa testeissä.
 <p/>
+Testidokumentteja voi suorittaa käynnistämällä ohjelman, ja sitten kirjoittamalla tiedoston nimi muodossa nimi.scv ja
+painamalla enter. Tarjolla olevien testitiedostojen nimet tulostuvat ohjelman käynnistyessä.
+<p/>
 simpleTest1.csv ja simpleTest2.csv ovat helppoja esimerkkiverkkoja, joilla testasin aluksi, että algoritmit toimivat
 oikein pienissä verkoissa, jotka eivät sisällä erikoistapauksia.
 <p/>
