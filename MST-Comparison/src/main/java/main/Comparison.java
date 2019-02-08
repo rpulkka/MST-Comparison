@@ -66,7 +66,7 @@ public class Comparison {
         numberOfEdges = graphData.getNumberOfEdges();
         maxVertice = graphData.getMaxVertice();
         kruskal = new Kruskal(maxVertice);
-        prim = new Prim(numberOfEdges);
+        prim = new Prim(maxVertice);
         boruvka = new Boruvka(maxVertice, numberOfEdges);
         //reverseDelete = new ReverseDelete();
     }

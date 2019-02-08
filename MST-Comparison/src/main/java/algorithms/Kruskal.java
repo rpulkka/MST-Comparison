@@ -18,6 +18,10 @@ public class Kruskal {
     }
     
     public int execute(GraphData graphData) {
+        if(graphData.getNumberOfVertices() == 0) {
+            return 0;
+        }
+        
         initEdges(graphData);
         
         int sumOfEdges = 0;

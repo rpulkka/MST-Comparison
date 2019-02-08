@@ -3,7 +3,6 @@ package algorithms;
 
 import data_management.GraphData;
 import algorithms.Prim;
-import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,18 +17,20 @@ public class PrimTest {
     
     @Before
     public void setUp() {
-        prim = new Prim(10000);
-        graphData = new GraphData(new int[99999999], new int[99999999], new int[99999999]);
     }
     
     @Test
     public void emptyGraphEqualsZero() {
+        prim = new Prim(0);
+        graphData = new GraphData(new int[0], new int[0], new int[0]);
         int result = prim.execute(graphData);
         assertEquals(result, 0);
     }
     
     @Test
     public void singleVertexTest() {
+        prim = new Prim(1);
+        graphData = new GraphData(new int[1], new int[1], new int[1]);
         graphData.update(1, 2, 5);
         int result = prim.execute(graphData);
         assertEquals(result, 5);
@@ -37,6 +38,8 @@ public class PrimTest {
     
     @Test
     public void mstOfMstEqualsSum() {
+        prim = new Prim(3);
+        graphData = new GraphData(new int[3], new int[3], new int[3]);
         graphData.update(1, 2, 10);
         graphData.update(2, 3, 10);
         graphData.update(3, 4, 10);

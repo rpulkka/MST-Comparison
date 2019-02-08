@@ -3,7 +3,12 @@ package algorithms;
 
 import data_management.GraphData;
 import algorithms.Kruskal;
-import java.util.ArrayList;
+import data_management.FileHandler;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -12,24 +17,36 @@ public class KruskalTest {
     
     Kruskal kruskal;
     GraphData graphData;
+    FileHandler reader;
     
     public KruskalTest() {
     }
     
     @Before
     public void setUp() {
-        kruskal = new Kruskal(10000);
-        graphData = new GraphData(new int[99999999], new int[99999999], new int[99999999]);
     }
     
     @Test
-    public void emptyGraphEqualsZero() {
+    public void emptyGraphEqualsZero() throws IOException, URISyntaxException {
+        kruskal = new Kruskal(0);
+        graphData = new GraphData(new int[0], new int[0], new int[0]);
+        URL url = getClass().getResource("/emptyGraph.csv");
+        URI uri = url.toURI();
+        reader.readFile(uri.getPath(), graphData);
         int result = kruskal.execute(graphData);
         assertEquals(result, 0);
     }
     
     @Test
-    public void singleVertexTest() {
+    public void singleVertexTest() throws IOException, URISyntaxException {
+        kruskal = new Kruskal(2);
+        graphData = new GraphData(new int[1], new int[1], new int[1]);
+        //URL url = new URL("file:///src/test/resources/emptyGraph.csv");
+        File testFile = new File(this.getClass().getResource("/singleEdge.csv").getFile());
+        URL url = new URL("file://"+testFile.getPath());
+        System.out.println(url.getPath());
+        URI uri = url.toURI();
+        reader.readFile(uri.getPath(), graphData);
         graphData.update(1, 2, 5);
         int result = kruskal.execute(graphData);
         assertEquals(result, 5);
@@ -37,6 +54,8 @@ public class KruskalTest {
     
     @Test
     public void mstOfMstEqualsSum() {
+        kruskal = new Kruskal(4);
+        graphData = new GraphData(new int[3], new int[3], new int[3]);
         graphData.update(1, 2, 10);
         graphData.update(2, 3, 10);
         graphData.update(3, 4, 10);

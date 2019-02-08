@@ -24,7 +24,7 @@ public class Boruvka {
     public Boruvka(int numOfVertices, int numOfEdges) {
         unionFind = new UnionFind(numOfVertices);
         numberOfVertices = numOfVertices;
-        edges = new PriorityQueue[numOfEdges];
+        edges = new PriorityQueue[numOfVertices];
         vertices = new ArrayList<Integer>();
         components = new ArrayList<Component>();
         sumOfEdges = 0;
@@ -37,7 +37,11 @@ public class Boruvka {
     }
 
     public int execute(GraphData graphData) {
-        for (int i = 1; i <= numberOfVertices; i++) {
+        if(graphData.getNumberOfVertices() == 0) {
+            return 0;
+        }
+        
+        for (int i = 0; i < numberOfVertices; i++) {
             edges[i] = new PriorityQueue<Edge>();
         }
 
