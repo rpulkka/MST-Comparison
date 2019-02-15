@@ -7,3 +7,4 @@
 [Viikkoraportti 2](https://github.com/rpulkka/MST-Comparison/blob/master/documentation/viikkoraportti2.md)</br>
 [Viikkoraportti 3](https://github.com/rpulkka/MST-Comparison/blob/master/documentation/viikkoraportti3.md)</br>
 [Viikkoraportti 4](https://github.com/rpulkka/MST-Comparison/blob/master/documentation/viikkoraportti4.md)</br>
+[Viikkoraportti 5](https://github.com/rpulkka/MST-Comparison/blob/master/documentation/viikkoraportti5.md)</br>
