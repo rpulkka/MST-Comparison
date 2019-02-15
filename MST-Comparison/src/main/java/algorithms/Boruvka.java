@@ -3,6 +3,7 @@ package algorithms;
 import domain.Component;
 import domain.Edge;
 import data_management.GraphData;
+import data_structures.EdgeHeap;
 import domain.UnionFind;
 import domain.Vertex;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.PriorityQueue;
 public class Boruvka {
 
     private UnionFind unionFind;
-    private PriorityQueue<Edge>[] edges;
+    private EdgeHeap[] edges;
     private int numberOfVertices;
     private ArrayList<Integer> vertices;
     private ArrayList<Component> components;
@@ -24,7 +25,7 @@ public class Boruvka {
     public Boruvka(int numOfVertices, int numOfEdges) {
         unionFind = new UnionFind(numOfVertices);
         numberOfVertices = numOfVertices;
-        edges = new PriorityQueue[numOfVertices];
+        edges = new EdgeHeap[numOfVertices];
         vertices = new ArrayList<Integer>();
         components = new ArrayList<Component>();
         sumOfEdges = 0;
@@ -42,7 +43,7 @@ public class Boruvka {
         }
         
         for (int i = 0; i < numberOfVertices; i++) {
-            edges[i] = new PriorityQueue<Edge>();
+            edges[i] = new EdgeHeap(10000);
         }
 
         initComponents(graphData);

@@ -27,16 +27,12 @@ public class EdgeHeap {
                 smallest = right;
             } else {
                 smallest = left;
-            } 
-            //System.out.println("index " + index + " largest " + smallest);
+            }
             if(heap[index].getLength() > heap[smallest].getLength()) {
-                //System.out.println("swap1");
                 swap(index, smallest);
                 fixPosition(smallest);
             }
-            //System.out.println("skip");
         } else if(left == size && heap[index].getLength() > heap[left].getLength()) {
-            //System.out.println("swap2");
             swap(index, left);
         }
     }
@@ -48,13 +44,14 @@ public class EdgeHeap {
     }
 
     public void add(Edge newEdge) {
-        heap[++size] = newEdge;
+        size++;
+        heap[size] = newEdge;
         int current = size;
 
         if (current == 1) {
             return;
-        }      
-
+        }
+        
         while (heap[current].getLength() < heap[getParent(current)].getLength()) {
             swap(current, getParent(current));
             current = getParent(current);
@@ -90,7 +87,6 @@ public class EdgeHeap {
     }
 
     public boolean deadEnd(int index) {
-        System.out.println(size);
         if (index >= (size / 2) && index <= size) {
             return true;
         }
@@ -107,5 +103,9 @@ public class EdgeHeap {
 
     public int getSize() {
         return size;
+    }
+
+    public Edge[] getHeap() {
+        return heap;
     }
 }

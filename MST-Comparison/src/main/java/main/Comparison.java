@@ -38,7 +38,7 @@ public class Comparison {
         execute();
     }
 
-    public static URI askForFile() throws URISyntaxException {
+    public static URL askForFile() throws URISyntaxException {
         URL url1 = Comparison.class.getResource("/");
         URI uri1 = url1.toURI();
         File folder = new File(uri1);
@@ -53,20 +53,19 @@ public class Comparison {
         System.out.println("Write a file name: ");
         String fileName = "/" + scanner.next();
         URL url = Comparison.class.getResource(fileName);
-        URI uri = url.toURI();
-        return uri;
+        return url;
     }
 
-    public static void setGraph(URI uri) throws URISyntaxException, IOException {
+    public static void setGraph(URL url) throws URISyntaxException, IOException {
         graphData = new GraphData(new int[99999999], new int[99999999], new int[99999999]);
-        reader.readFile(uri.getPath(), graphData);
+        reader.readFile(url.getPath(), graphData);
 //        GraphCreator graphCreator = new GraphCreator();
 //        graphData = graphCreator.createGraph();
 
         numberOfEdges = graphData.getNumberOfEdges();
         maxVertice = graphData.getMaxVertice();
         kruskal = new Kruskal(maxVertice);
-        prim = new Prim(maxVertice);
+//        prim = new Prim(maxVertice, numberOfEdges);
         boruvka = new Boruvka(maxVertice, numberOfEdges);
         //reverseDelete = new ReverseDelete();
     }
@@ -76,16 +75,16 @@ public class Comparison {
         int kruskalResult = kruskal.execute(graphData);
         long kruskalEndTime = System.currentTimeMillis();
         long primStartTime = System.currentTimeMillis();
-        int primResult = prim.execute(graphData);
+        //int primResult = prim.execute(graphData);
         long primEndTime = System.currentTimeMillis();
         long boruvkaStartTime = System.currentTimeMillis();
         int boruvkaResult = boruvka.execute(graphData);
         long boruvkaEndTime = System.currentTimeMillis();
         System.out.println("Kruskal's Algorithm result: " + kruskalResult);
-        System.out.println("Kruskal's Algorithm duration: " + (kruskalEndTime - kruskalStartTime));
-        System.out.println("Prim's Algorithm result: " + primResult);
-        System.out.println("Prim's Algorithm duration: " + (primEndTime - primStartTime));
+        System.out.println("Kruskal's Algorithm duration: " + (kruskalEndTime - kruskalStartTime) + "ms");
+        //System.out.println("Prim's Algorithm result: " + primResult);
+        //System.out.println("Prim's Algorithm duration: " + (primEndTime - primStartTime) + "ms");
         System.out.println("Boruvka's Algorithm result: " + boruvkaResult);
-        System.out.println("Boruvka's Algorithm duration: " + (boruvkaEndTime - boruvkaStartTime));
+        System.out.println("Boruvka's Algorithm duration: " + (boruvkaEndTime - boruvkaStartTime) + "ms");
     }
 }
