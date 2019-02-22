@@ -4,6 +4,7 @@ import domain.Edge;
 import data_management.GraphData;
 import data_structures.EdgeHeap;
 import data_structures.IntegerList;
+import data_structures.ObjectList;
 
 /**
  * Prim's algorithm is implemented in this class.
@@ -11,13 +12,13 @@ import data_structures.IntegerList;
 public class Prim {
     int numberOfVertices;
     int numberOfEdges;
-    Edge[][] edgesFromStart;
+    ObjectList[] edgesFromStart;
     int[] indexOf;
 
     public Prim(int numberOfVertices, int numberOfEdges) {
         this.numberOfVertices = numberOfVertices;
         this.numberOfEdges = numberOfEdges;
-        this.edgesFromStart = new Edge[numberOfVertices][numberOfEdges];
+        this.edgesFromStart = new ObjectList[numberOfVertices];
         this.indexOf = new int[numberOfVertices];
     }
 
@@ -38,8 +39,8 @@ public class Prim {
 
         //Start from vertex number 1.
         visited.add(1);
-        for (int i = 0; i < indexOf[0]; i++) {
-            edgeHeap.add(edgesFromStart[0][i]);
+        for (int i = 0; i < edgesFromStart[0].size(); i++) {
+            edgeHeap.add((Edge)edgesFromStart[0].get(i));
         }
 
         Edge smallest;
@@ -58,23 +59,21 @@ public class Prim {
             } else {
                 sumOfEdges += smallest.getLength();
                 visited.add(smallest.getEnd());
-                for (int i = 0; i < indexOf[smallest.getEnd() - 1]; i++) {
-                    //System.out.println("i " + i + " index " + indexOf[smallest.getEnd() - 1]);
-                    //System.out.println("heapSize " + edgeHeap.getSize());
-                    edgeHeap.add(edgesFromStart[smallest.getEnd() - 1][i]);
+                for (int i = 0; i < edgesFromStart[smallest.getEnd() - 1].size(); i++) {
+                    edgeHeap.add((Edge)edgesFromStart[smallest.getEnd() - 1].get(i));
                 }
             }
         }
     }
 
     public void initEdges(GraphData graphData) {
+        for(int i = 0; i < edgesFromStart.length; i++) {
+            edgesFromStart[i] = new ObjectList();
+        }
+        
         for (int i = 0; i < graphData.getCounter(); i++) {
-            int sourceIndex = indexOf[graphData.getSourceOf(i) - 1];
-            int endIndex = indexOf[graphData.getDestinationOf(i) - 1];
-            edgesFromStart[graphData.getSourceOf(i) - 1][sourceIndex] = new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i));
-            edgesFromStart[graphData.getDestinationOf(i) - 1][endIndex] = new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i));
-            indexOf[graphData.getSourceOf(i) - 1]++;
-            indexOf[graphData.getDestinationOf(i) - 1]++;
+            edgesFromStart[graphData.getSourceOf(i) - 1].add(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)));
+            edgesFromStart[graphData.getDestinationOf(i) - 1].add(new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i)));
         }
     }
 }

@@ -10,7 +10,6 @@ public class IntegerList {
         size = 0;
     }
     
-    
     public void add(int integer) {
         if (size == array.length) {
             int[] copy = new int[size * 2];

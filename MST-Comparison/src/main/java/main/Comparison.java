@@ -74,15 +74,15 @@ public class Comparison {
         int kruskalResult = kruskal.execute(graphData);
         long kruskalEndTime = System.currentTimeMillis();
         long primStartTime = System.currentTimeMillis();
-//        int primResult = prim.execute(graphData);
+        int primResult = prim.execute(graphData);
         long primEndTime = System.currentTimeMillis();
         long boruvkaStartTime = System.currentTimeMillis();
         int boruvkaResult = boruvka.execute(graphData);
         long boruvkaEndTime = System.currentTimeMillis();
         System.out.println("Kruskal's Algorithm result: " + kruskalResult);
         System.out.println("Kruskal's Algorithm duration: " + (kruskalEndTime - kruskalStartTime) + "ms");
-//        System.out.println("Prim's Algorithm result: " + primResult);
-//        System.out.println("Prim's Algorithm duration: " + (primEndTime - primStartTime) + "ms");
+        System.out.println("Prim's Algorithm result: " + primResult);
+        System.out.println("Prim's Algorithm duration: " + (primEndTime - primStartTime) + "ms");
         System.out.println("Boruvka's Algorithm result: " + boruvkaResult);
         System.out.println("Boruvka's Algorithm duration: " + (boruvkaEndTime - boruvkaStartTime) + "ms");
     }
