@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
+import performance_testing.PerformanceTester;
 
 /**
  * The main class, where the algorithms will be executed, timed and compared.
@@ -18,6 +19,7 @@ import java.util.Scanner;
 public class Comparison {
 
     private static GraphData graphData;
+    private static PerformanceTester performanceTester;
     private static FileHandler reader;
     private static Kruskal kruskal;
     private static Prim prim;
@@ -25,16 +27,24 @@ public class Comparison {
     //private static ReverseDelete reverseDelete;
     private static int numberOfEdges;
     private static int maxVertice;
+    private static Scanner scanner;
 
     public static void init() {
         reader = new FileHandler();
+        performanceTester = new PerformanceTester();
+        scanner = new Scanner(System.in);
     }
 
     public static void main(String args[]) throws IOException, URISyntaxException {
         init();
         setGraph(askForFile());
-        //setGraph(null);
-        execute();
+        System.out.println("For single execution, write '1', for performance testing, write '2' (this option might take several minutes).");
+        int mode = Integer.parseInt(scanner.next());
+        if(mode == 1) {
+            execute();
+        } else if(mode == 2) {
+            performanceTester.testPerformance(kruskal, prim, boruvka, graphData);
+        }
     }
 
     public static URL askForFile() throws URISyntaxException {
@@ -48,7 +58,6 @@ public class Comparison {
             }
         }
         System.out.println("");
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Write a file name: ");
         String fileName = "/" + scanner.next();
         URL url = Comparison.class.getResource(fileName);
