@@ -4,7 +4,6 @@ import domain.Edge;
 import data_management.GraphData;
 import data_structures.EdgeHeap;
 import domain.UnionFind;
-import java.util.PriorityQueue;
 
 /**
  * Kruskal's algorithm is implemented in this class.

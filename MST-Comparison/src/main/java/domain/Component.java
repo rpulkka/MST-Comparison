@@ -1,17 +1,17 @@
 
 package domain;
 
-import java.util.ArrayList;
+import data_structures.ObjectList;
 
 public class Component {
     
     private int parent;
-    private ArrayList<Vertex> vertices;
+    private ObjectList vertices;
     private boolean deleted;
     
     public Component(int parent) {
         this.parent = parent;
-        this.vertices = new ArrayList<Vertex>();
+        this.vertices = new ObjectList();
         vertices.add(new Vertex(parent));
         this.deleted = false;
     }
@@ -24,11 +24,11 @@ public class Component {
         this.parent = parent;
     }
 
-    public ArrayList<Vertex> getVertices() {
+    public ObjectList getVertices() {
         return vertices;
     }
 
-    public void setVertices(ArrayList<Vertex> vertices) {
+    public void setVertices(ObjectList vertices) {
         this.vertices = vertices;
     }
 

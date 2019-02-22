@@ -1,23 +1,24 @@
 
 package domain;
 
-import java.util.PriorityQueue;
+import data_structures.EdgeHeap;
+
 
 public class Vertex {
     
     private int value;
-    private PriorityQueue<Edge> edges;
+    private EdgeHeap edges;
     
     public Vertex(int value) {
         this.value = value;
-        this.edges = new PriorityQueue<Edge>();
+        this.edges = new EdgeHeap(100);
     }
     
     public void addEdge(Edge e) {
         edges.add(e);
     }
     
-    public PriorityQueue<Edge> getEdges() {
+    public EdgeHeap getEdges() {
         return edges;
     }
 

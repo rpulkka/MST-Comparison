@@ -60,6 +60,18 @@ public class EdgeHeap {
             }
         }
     }
+    
+    public boolean contains(Edge edge) {
+        for (int i = 1; i <= size; i++) {
+            if (heap[i].getStart() == edge.getStart() && heap[i].getEnd() == edge.getEnd() && heap[i].getLength() == edge.getLength()) {
+                return true;
+            }
+            if (heap[i].getStart() == edge.getEnd() && heap[i].getEnd() == edge.getStart() && heap[i].getLength() == edge.getLength()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Edge peek() {
         return heap[1];

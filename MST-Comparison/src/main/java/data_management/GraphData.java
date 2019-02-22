@@ -1,7 +1,7 @@
 
 package data_management;
 
-import java.util.ArrayList;
+import data_structures.IntegerSet;
 import java.util.HashSet;
 
 /**
@@ -14,13 +14,13 @@ import java.util.HashSet;
  */
 public class GraphData {
     private int[] source, destination, value;
-    private HashSet<Integer> vertexSet;
+    private IntegerSet vertexSet;
     private int numberOfVertices;
     private int numberOfEdges;
     private int maxVertice;
 
     public GraphData(int[] source, int[] destination, int[] value) {
-        this.vertexSet = new HashSet<Integer>();
+        this.vertexSet = new IntegerSet(100);
         this.source = source;
         this.destination = destination;
         this.value = value;

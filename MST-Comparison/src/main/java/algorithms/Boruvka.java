@@ -4,6 +4,7 @@ import domain.Component;
 import domain.Edge;
 import data_management.GraphData;
 import data_structures.EdgeHeap;
+import data_structures.ObjectList;
 import domain.UnionFind;
 import domain.Vertex;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class Boruvka {
     private UnionFind unionFind;
     private EdgeHeap[] edges;
     private int numberOfVertices;
-    private ArrayList<Integer> vertices;
+    private ObjectList vertices;
     private ArrayList<Component> components;
     private int sumOfEdges;
     private boolean firstLap;
@@ -26,7 +27,7 @@ public class Boruvka {
         unionFind = new UnionFind(numOfVertices);
         numberOfVertices = numOfVertices;
         edges = new EdgeHeap[numOfVertices];
-        vertices = new ArrayList<Integer>();
+        vertices = new ObjectList();
         components = new ArrayList<Component>();
         sumOfEdges = 0;
         firstLap = true;
@@ -61,16 +62,16 @@ public class Boruvka {
 
     public void initComponents(GraphData graphData) {
         for (int i = 0; i < graphData.getCounter(); i++) {
-            if(components.get(graphData.getSourceOf(i) - 1).getVertices().get(0).getEdges().contains(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)))) {
+            Vertex vertexS = (Vertex) components.get(graphData.getSourceOf(i) - 1).getVertices().get(0);
+            Vertex vertexD = (Vertex) components.get(graphData.getDestinationOf(i) - 1).getVertices().get(0);
+            if(vertexS.getEdges().contains(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)))) {
                 continue;
             }
-            if(components.get(graphData.getDestinationOf(i) - 1).getVertices().get(0).getEdges().contains(new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i)))) {
-                continue;
-            }
-            components.get(graphData.getSourceOf(i) - 1).getVertices().get(0).
-                    addEdge(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)));
-            components.get(graphData.getDestinationOf(i) - 1).getVertices().get(0).
-                    addEdge(new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i)));
+//            if(components.get(graphData.getDestinationOf(i) - 1).getVertices().get(0).getEdges().contains(new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i)))) {
+//                continue;
+//            }
+            vertexS.addEdge(new Edge(graphData.getSourceOf(i), graphData.getDestinationOf(i), graphData.getValueOf(i)));
+            vertexD.addEdge(new Edge(graphData.getDestinationOf(i), graphData.getSourceOf(i), graphData.getValueOf(i)));
         }
     }
 
@@ -81,7 +82,8 @@ public class Boruvka {
                 continue;
             }
             PriorityQueue<Edge> smallestEdges = new PriorityQueue<Edge>();
-            for (Vertex vertex : component.getVertices()) {
+            for(int i = 0; i < component.getVertices().size(); i++) {
+                Vertex vertex = (Vertex) component.getVertices().get(i);
                 Edge smallestEdgeOfVertex = null;
                 while (!vertex.getEdges().isEmpty()) {
                     Edge peeked = vertex.getEdges().peek();
@@ -100,11 +102,12 @@ public class Boruvka {
 
             if (smallestEdges.isEmpty()) {
                 if(firstLap) {
-                    unionFind.setGroupSize(component.getVertices().get(0).getValue(), 0);
-                    if(component.getVertices().get(0).getValue() > 1) {
-                        unionFind.addConnection(component.getVertices().get(0).getValue(), component.getVertices().get(0).getValue() - 1);
+                    Vertex vertex = (Vertex)component.getVertices().get(0);
+                    unionFind.setGroupSize(vertex.getValue(), 0);
+                    if(vertex.getValue() > 1) {
+                        unionFind.addConnection(vertex.getValue(), vertex.getValue() - 1);
                     } else {
-                        unionFind.addConnection(component.getVertices().get(0).getValue(), component.getVertices().get(0).getValue() + 1);
+                        unionFind.addConnection(vertex.getValue(), vertex.getValue() + 1);
                     }
                     component.setDeleted(true);
                     continue;
@@ -140,10 +143,10 @@ public class Boruvka {
             if(source == destination) {
                 continue;
             }
-
-            ArrayList<Vertex> migration = components.get(source - 1).getVertices();
-            for (Vertex v : migration) {
-                components.get(destination - 1).getVertices().add(v);
+            
+            ObjectList migration = components.get(source - 1).getVertices();
+            for (int i = 0; i < migration.size(); i++) {
+                components.get(destination - 1).getVertices().add((Vertex)migration.get(i));
             }
             components.get(source - 1).setDeleted(true);
             sumOfEdges += edge.getLength();

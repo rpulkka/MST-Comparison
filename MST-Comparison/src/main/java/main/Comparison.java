@@ -5,7 +5,6 @@ import data_management.GraphData;
 import algorithms.Prim;
 import algorithms.Boruvka;
 import algorithms.Kruskal;
-import domain.GraphCreator;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -65,7 +64,7 @@ public class Comparison {
         numberOfEdges = graphData.getNumberOfEdges();
         maxVertice = graphData.getMaxVertice();
         kruskal = new Kruskal(maxVertice);
-//        prim = new Prim(maxVertice, numberOfEdges);
+        prim = new Prim(maxVertice, numberOfEdges);
         boruvka = new Boruvka(maxVertice, numberOfEdges);
         //reverseDelete = new ReverseDelete();
     }
@@ -75,15 +74,15 @@ public class Comparison {
         int kruskalResult = kruskal.execute(graphData);
         long kruskalEndTime = System.currentTimeMillis();
         long primStartTime = System.currentTimeMillis();
-        //int primResult = prim.execute(graphData);
+//        int primResult = prim.execute(graphData);
         long primEndTime = System.currentTimeMillis();
         long boruvkaStartTime = System.currentTimeMillis();
         int boruvkaResult = boruvka.execute(graphData);
         long boruvkaEndTime = System.currentTimeMillis();
         System.out.println("Kruskal's Algorithm result: " + kruskalResult);
         System.out.println("Kruskal's Algorithm duration: " + (kruskalEndTime - kruskalStartTime) + "ms");
-        //System.out.println("Prim's Algorithm result: " + primResult);
-        //System.out.println("Prim's Algorithm duration: " + (primEndTime - primStartTime) + "ms");
+//        System.out.println("Prim's Algorithm result: " + primResult);
+//        System.out.println("Prim's Algorithm duration: " + (primEndTime - primStartTime) + "ms");
         System.out.println("Boruvka's Algorithm result: " + boruvkaResult);
         System.out.println("Boruvka's Algorithm duration: " + (boruvkaEndTime - boruvkaStartTime) + "ms");
     }
