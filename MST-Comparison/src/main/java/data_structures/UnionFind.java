@@ -1,5 +1,5 @@
 
-package domain;
+package data_structures;
 
 /**
  * Union-Find structure is implemented in this class. It offers valuable data 

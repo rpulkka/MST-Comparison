@@ -1,12 +1,12 @@
 package algorithms;
 
-import domain.Component;
-import domain.Edge;
+import components.Component;
+import components.Edge;
 import data_management.GraphData;
 import data_structures.EdgeHeap;
 import data_structures.ObjectList;
-import domain.UnionFind;
-import domain.Vertex;
+import data_structures.UnionFind;
+import components.Vertex;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 

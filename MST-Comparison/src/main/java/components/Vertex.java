@@ -1,5 +1,5 @@
 
-package domain;
+package components;
 
 import data_structures.EdgeHeap;
 

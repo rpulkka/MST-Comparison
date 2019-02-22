@@ -1,6 +1,6 @@
 package data_structures;                                                                  
 
-import domain.Edge;
+import components.Edge;
 
 public class EdgeHeap {
 

@@ -1,7 +1,7 @@
 
 package algorithms;
 
-import domain.UnionFind;
+import data_structures.UnionFind;
 import java.util.Collections;
 
 /**

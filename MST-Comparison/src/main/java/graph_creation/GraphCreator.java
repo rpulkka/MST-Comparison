@@ -1,5 +1,5 @@
 
-package domain;
+package graph_creation;
 
 import data_management.GraphData;
 import java.util.Random;

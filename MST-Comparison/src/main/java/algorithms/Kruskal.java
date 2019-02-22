@@ -1,9 +1,9 @@
 package algorithms;
 
-import domain.Edge;
+import components.Edge;
 import data_management.GraphData;
 import data_structures.EdgeHeap;
-import domain.UnionFind;
+import data_structures.UnionFind;
 
 /**
  * Kruskal's algorithm is implemented in this class.
