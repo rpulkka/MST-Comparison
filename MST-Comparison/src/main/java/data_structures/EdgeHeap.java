@@ -2,6 +2,7 @@ package data_structures;
 
 import components.Edge;
 
+
 public class EdgeHeap {
 
     private Edge[] heap;

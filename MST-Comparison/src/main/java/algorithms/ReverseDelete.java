@@ -2,7 +2,6 @@
 package algorithms;
 
 import data_structures.UnionFind;
-import java.util.Collections;
 
 /**
  * Reverse-Delete algorithm is implemented in this class. 

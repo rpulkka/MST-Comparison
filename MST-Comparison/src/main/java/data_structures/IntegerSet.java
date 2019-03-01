@@ -42,4 +42,8 @@ public class IntegerSet {
     public int size() {
         return size;
     }
+
+    public int[] getSet() {
+        return set;
+    }
 }

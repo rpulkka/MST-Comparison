@@ -2,14 +2,22 @@ package performance_testing;
 
 import algorithms.*;
 import data_management.GraphData;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import main.Comparison;
 
+/**
+ * The PerformanceTester class executes the chosen test graph numerous times 
+ * with each algorithm and then counts the average execution times for each
+ * algorithm for performance testing purposes.
+ */
 public class PerformanceTester {
 
     public PerformanceTester() {
 
     }
 
-    public void testPerformance(Kruskal kruskal, Prim prim, Boruvka boruvka, GraphData graphData) {
+    public void testPerformance(Kruskal kruskal, Prim prim, Boruvka boruvka, GraphData graphData) throws URISyntaxException, IOException {
         long[] kruskalResults = new long[100];
         long[] primResults = new long[100];
         long[] boruvkaResults = new long[100];
@@ -49,8 +57,13 @@ public class PerformanceTester {
         long primAvg = primSum / primResults.length;
         long boruvkaAvg = boruvkaSum / boruvkaResults.length;
         
+        System.out.println("");
+        System.out.println("Performance Test Results:");
+        System.out.println("");
         System.out.println("Kruskal's Average Time: " + kruskalAvg + "ms");
         System.out.println("Prim's Average Time: " + primAvg + "ms");
         System.out.println("Boruvka's Average Time: " + boruvkaAvg + "ms");
+        
+        Comparison.idle();
     }
 }

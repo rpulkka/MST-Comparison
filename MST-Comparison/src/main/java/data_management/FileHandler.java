@@ -23,5 +23,7 @@ public class FileHandler {
             String[] edgeData = line.split(split);
             graphData.update(Integer.parseInt(edgeData[0]), Integer.parseInt(edgeData[1]), Integer.parseInt(edgeData[2]));
         }
+        
+        graphData.initVertices();
     }
 }

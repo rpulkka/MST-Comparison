@@ -1,8 +1,8 @@
 
 package data_management;
 
+import components.Vertex;
 import data_structures.IntegerSet;
-import java.util.HashSet;
 
 /**
  * The Graph Data class stores the information about the edges of the graph
@@ -15,6 +15,7 @@ import java.util.HashSet;
 public class GraphData {
     private int[] source, destination, value;
     private IntegerSet vertexSet;
+    private Vertex[] vertices;
     private int numberOfVertices;
     private int numberOfEdges;
     private int maxVertice;
@@ -24,8 +25,8 @@ public class GraphData {
         this.source = source;
         this.destination = destination;
         this.value = value;
-        numberOfEdges = 0;
-        maxVertice = 0;
+        this.numberOfEdges = 0;
+        this.maxVertice = 0;
     }
     
     public void update(int source, int destination, int value) {
@@ -43,6 +44,13 @@ public class GraphData {
         }
         if(destination > maxVertice) {
             maxVertice = destination;
+        }
+    }
+    
+    public void initVertices() {
+        this.vertices = new Vertex[maxVertice + 1];
+        for(int i = 0; i < vertexSet.size(); i++) {
+            vertices[vertexSet.getSet()[i]] = new Vertex(i);
         }
     }
 
@@ -84,5 +92,13 @@ public class GraphData {
 
     public int getMaxVertice() {
         return maxVertice;
+    }
+
+    public IntegerSet getVertexSet() {
+        return vertexSet;
+    }
+    
+    public Vertex[] getVertices() {
+        return vertices;
     }
 }
