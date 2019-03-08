@@ -88,7 +88,7 @@ public class Comparison {
      * Directs the control to the corresponding function based on user input.
      *
      * @see #printIntroText()
-     * @see #setGraph(java.net.URL)
+     * @see #setGraph(java.io.InputStream) 
      * @see #execute()
      * @see PerformanceTester#testPerformance(algorithms.Kruskal,
      * algorithms.Prim, algorithms.Boruvka, data_management.GraphData)
@@ -169,7 +169,7 @@ public class Comparison {
      * initializes the program based on the current graph.
      *
      * @param stream address of the file.
-     * @see FileHandler#readFile(java.lang.String, data_management.GraphData)
+     * @see FileHandler#readFile(java.io.InputStream, data_management.GraphData) 
      * @see GraphData#initVertices()
      */
     public static void setGraph(InputStream stream) throws URISyntaxException, IOException {
@@ -187,7 +187,7 @@ public class Comparison {
      * Sets up a new graph that's created by the graph creator, just like the
      * setGraph() function does, but it doesn't take an address as parameter.
      *
-     * @see #setGraph(java.net.URL)
+     * @see #setGraph(java.io.InputStream) 
      */
     public static void setRandomizedGraph() {
         numberOfEdges = graphData.getNumberOfEdges();
@@ -208,6 +208,8 @@ public class Comparison {
      * @see #idle()
      */
     public static void execute() throws URISyntaxException, IOException {
+        System.out.println(maxVertice);
+        System.out.println(numberOfEdges);
         System.out.println("");
         System.out.println("Results");
         System.out.println("");

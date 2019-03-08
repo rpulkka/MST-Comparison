@@ -38,7 +38,6 @@ public class GraphCreator {
      * Creates a new 'randomized' number by counting (System.nanoTime) modulo
      * (the max value).
      * 
-     * @see #generateRandomNumber(int) 
      * @return New graph.
      */
     public long generateRandomNumber(int modulus) {

@@ -43,7 +43,7 @@ public class Boruvka {
      * @param graphData Data source.
      * @see #initComponents(data_management.GraphData) 
      * @see #addedEdges() 
-     * @see #mergeComponents(java.util.ArrayList) 
+     * @see #mergeComponents(data_structures.ObjectList) 
      * @return Returns the sum of edges of the minimum spanning tree.
      */
     public int execute(GraphData graphData) {
