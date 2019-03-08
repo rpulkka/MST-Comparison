@@ -43,7 +43,7 @@ mutta toki on olemassa myös vaihtoehtoisia tapoja esim. komentorivin kautta.
 Ensiksi todettakoon, että voit itse kokeilla suorituskyvyn testaamista ohjelman tarjoaman PerformanceTester -luokan ansiosta.
 Lue käyttöohjeet, jos aiot kokeilla (tai päättele itse).
 <p/>
-src/main/resources -kansiosta löytyy largeTest1.csv - largeTest5.csv tiedostot, joita käytin itse suorituskyvyn testaamiseen.
+src/main/resources -kansiosta löytyy largeTest1.csv - largeTest4.csv tiedostot, joita käytin itse suorituskyvyn testaamiseen.
 PerformanceTester laskee sadan suorituskerran ajalliset keskiarvot jokaista algoritmia kohden. Olen kirjannut nämä tulokset ylös
 ja niitä voi tutkia alla olevista diagrammeista. Listaan alle jokaisen testin syötteiden yksityiskohdat ja tulokset näkyvät
 diagrammeista. Käytän seuraavia lyhenteitä: V = solmujen lukumäärä, E = kaarten lukumäärä, L = kaaren pituuden maksimi.
@@ -60,11 +60,7 @@ largeTest3.csv (V = 9000, E, 90 000, L = 900)
 <p/>
 ![GitHub Logo](images/largeTest3.png)
 <p/>
-largeTest4.csv (V = 35000, E, 100000, L = 50)
+largeTest4.csv (V = 10000, E, 100000, L = 10)
 <p/>
 ![GitHub Logo](images/largeTest4.png)
-<p/>
-largeTest5.csv (V = 10000, E, 100000, L = 10)
-<p/>
-![GitHub Logo](images/largeTest5.png)
 <p/>
