@@ -10,3 +10,7 @@
 [Viikkoraportti 4](https://github.com/rpulkka/MST-Comparison/blob/master/documentation/viikkoraportti4.md)</br>
 [Viikkoraportti 5](https://github.com/rpulkka/MST-Comparison/blob/master/documentation/viikkoraportti5.md)</br>
 [Viikkoraportti 6](https://github.com/rpulkka/MST-Comparison/blob/master/documentation/viikkoraportti6.md)
+<p/>
+JavaDoc can be found from documentation/javadoc.
+<p/>
+Total Time spent: 80h
