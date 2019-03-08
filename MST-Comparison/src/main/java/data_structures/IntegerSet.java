@@ -1,5 +1,8 @@
 package data_structures;
 
+/**
+ * The set data structure for integers.
+ */
 public class IntegerSet {
 
     private int[] set;
@@ -11,6 +14,9 @@ public class IntegerSet {
     }
 
     public void add(int value) {
+        if(contains(value)) {
+            return;
+        }
         if (size == set.length) {
             int[] copy = new int[size * 2];
             for (int i = 0; i < set.length; i++) {

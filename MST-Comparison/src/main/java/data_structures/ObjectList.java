@@ -1,7 +1,9 @@
 
 package data_structures;
 
-
+/**
+ * The array list data structure for objects.
+ */
 public class ObjectList {
     
     private Object[] array;

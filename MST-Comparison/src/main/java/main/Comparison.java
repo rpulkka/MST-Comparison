@@ -6,16 +6,15 @@ import algorithms.Prim;
 import algorithms.Boruvka;
 import algorithms.Kruskal;
 import graph_creation.GraphCreator;
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Scanner;
 import performance_testing.PerformanceTester;
 
 /**
- * The main class, where the algorithms will be executed, timed and compared.
+ * The main class. It contains the UI for the program and it calls the
+ * algorithms to execute and counts times them.
  */
 public class Comparison {
 
@@ -26,12 +25,14 @@ public class Comparison {
     private static Kruskal kruskal;
     private static Prim prim;
     private static Boruvka boruvka;
-    //private static ReverseDelete reverseDelete;
     private static int numberOfEdges;
     private static int maxVertice;
     private static Scanner scanner;
     private static boolean notFirstTime;
 
+    /**
+     * Initializes the variables of the main class.
+     */
     public static void init() {
         reader = new FileHandler();
         performanceTester = new PerformanceTester();
@@ -40,11 +41,23 @@ public class Comparison {
         graphData = null;
     }
 
+    /**
+     * Launches the program loop.
+     */
     public static void main(String args[]) throws URISyntaxException, IOException {
-        start();
+        loop();
     }
 
-    public static void start() throws URISyntaxException, IOException {
+    /**
+     * This is the program loop. It calls the following three functions until
+     * chooseMode() returns false.
+     *
+     * @see #init()
+     * @see #printIntroText()
+     * @see #chooseMode()
+     *
+     */
+    public static void loop() throws URISyntaxException, IOException {
         while (true) {
             init();
             printIntroText();
@@ -54,6 +67,10 @@ public class Comparison {
         }
     }
 
+    /**
+     * Prints the instructions to the screen so that the user can choose what
+     * they want to do with the program.
+     */
     public static void printIntroText() {
         if (!notFirstTime) {
             System.out.println("Welcome to the MST-Comparison program!");
@@ -66,7 +83,18 @@ public class Comparison {
         System.out.println("Write '4' to exit the program.");
         System.out.println("");
     }
-    
+
+    /**
+     * Directs the control to the corresponding function based on user input.
+     *
+     * @see #printIntroText()
+     * @see #setGraph(java.net.URL)
+     * @see #execute()
+     * @see PerformanceTester#testPerformance(algorithms.Kruskal,
+     * algorithms.Prim, algorithms.Boruvka, data_management.GraphData)
+     * @see #launchGraphCreator()
+     * @return False if user wants to quit program, else true
+     */
     public static boolean chooseMode() throws URISyntaxException, IOException {
         int mode = 0;
         while (true) {
@@ -101,38 +129,66 @@ public class Comparison {
         return true;
     }
 
-    public static URL askForFile() throws URISyntaxException {
-        URL url1 = Comparison.class.getResource("/");
-        URI uri1 = url1.toURI();
-        File folder = new File(uri1);
-        File[] listOfFiles = folder.listFiles();
-        System.out.println("List of existing graph files:");
-        System.out.println("");
-        for (int i = 0; i < listOfFiles.length; i++) {
-            if (listOfFiles[i].getName().contains(".csv") && (listOfFiles[i].getName().charAt(0) != '.')) {
-                System.out.println(listOfFiles[i].getName());
+    /**
+     * Reads the file name from user input.
+     *
+     * @return The file as input stream.
+     */
+    public static InputStream askForFile() throws URISyntaxException, IOException {
+        InputStream stream = null;
+        while (true) {
+            //System.out.println("List of existing graph files:");
+            //System.out.println("");
+//            CODE FOR PRINTING ALL FILENAMES (DOESN'T WORK...)
+//            final ClassLoader loader = Thread.currentThread().getContextClassLoader();
+//            try (
+//                    final InputStream is = loader.getResourceAsStream("resources");
+//                    final InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
+//                    final BufferedReader br = new BufferedReader(isr)) {
+//                br.lines().forEach(System.out::println);
+//            }
+            System.out.println("");
+            System.out.println("Choose an existing file and write the exact file name: ");
+            System.out.println("");
+            String fileName = "/" + scanner.next();
+            stream = Comparison.class.getResourceAsStream(fileName);
+            if (stream == null) {
+                System.out.println("");
+                System.out.println("ERROR: Incorrect filename, try again.");
+                System.out.println("");
+            } else {
+                break;
             }
         }
-        System.out.println("");
-        System.out.println("Choose an existing file from the list above and write the exact file name: ");
-        System.out.println("");
-        String fileName = "/" + scanner.next();
-        URL url = Comparison.class.getResource(fileName);
-        return url;
+        return stream;
     }
 
-    public static void setGraph(URL url) throws URISyntaxException, IOException {
+    /**
+     * Calls FileHandler to read the file to GraphData and creates all three
+     * algorithm objects of correct size (parameters). In other words, it
+     * initializes the program based on the current graph.
+     *
+     * @param stream address of the file.
+     * @see FileHandler#readFile(java.lang.String, data_management.GraphData)
+     * @see GraphData#initVertices()
+     */
+    public static void setGraph(InputStream stream) throws URISyntaxException, IOException {
         graphData = new GraphData(new int[99999999], new int[99999999], new int[99999999]);
-        reader.readFile(url.getPath(), graphData);
+        reader.readFile(stream, graphData);
         numberOfEdges = graphData.getNumberOfEdges();
         maxVertice = graphData.getMaxVertice();
         kruskal = new Kruskal(maxVertice);
         prim = new Prim(maxVertice, numberOfEdges);
         boruvka = new Boruvka(maxVertice, numberOfEdges);
         graphData.initVertices();
-        //reverseDelete = new ReverseDelete();
     }
 
+    /**
+     * Sets up a new graph that's created by the graph creator, just like the
+     * setGraph() function does, but it doesn't take an address as parameter.
+     *
+     * @see #setGraph(java.net.URL)
+     */
     public static void setRandomizedGraph() {
         numberOfEdges = graphData.getNumberOfEdges();
         maxVertice = graphData.getMaxVertice();
@@ -142,6 +198,15 @@ public class Comparison {
         graphData.initVertices();
     }
 
+    /**
+     * Calls all of the algorithms to execute and prints out their results and
+     * times the execution of each algorithm.
+     *
+     * @see Kruskal#execute(data_management.GraphData)
+     * @see Prim#execute(data_management.GraphData)
+     * @see Boruvka#execute(data_management.GraphData)
+     * @see #idle()
+     */
     public static void execute() throws URISyntaxException, IOException {
         System.out.println("");
         System.out.println("Results");
@@ -164,6 +229,16 @@ public class Comparison {
         idle();
     }
 
+    /**
+     * Asks the user about the details of the new graph and passes the details
+     * to GraphCreator as parameters. Then it calls other functions to set up
+     * and execute the graph.
+     *
+     * @see GraphCreator#createGraph(int, int, int)
+     * @see #setRandomizedGraph()
+     * @see #execute()
+     * @see #idle()
+     */
     public static void launchGraphCreator() throws URISyntaxException, IOException {
         int numOfVertices;
         while (true) {
@@ -195,7 +270,7 @@ public class Comparison {
         System.out.println("");
         int maxLength;
         while (true) {
-            System.out.println("Write down the number of edges in the new graph.");
+            System.out.println("Write down the maximum length of edges in the new graph.");
             System.out.println("");
             try {
                 maxLength = Integer.parseInt(scanner.next());
@@ -209,9 +284,14 @@ public class Comparison {
         graphData = graphCreator.createGraph(numOfEdges, numOfVertices, maxLength);
         setRandomizedGraph();
         execute();
-        idle();
     }
 
+    /**
+     * Waits until the user has read the results. After this, the program loop
+     * continues.
+     *
+     * @see #loop()
+     */
     public static void idle() throws URISyntaxException, IOException {
         System.out.println("");
         System.out.println("Press enter to continue.");

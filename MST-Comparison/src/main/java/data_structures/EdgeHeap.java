@@ -1,8 +1,10 @@
-package data_structures;                                                                  
+package data_structures;
 
 import components.Edge;
 
-
+/**
+ * The heap data structure applied to edges.
+ */
 public class EdgeHeap {
 
     private Edge[] heap;
@@ -13,37 +15,49 @@ public class EdgeHeap {
         this.size = 0;
     }
 
+    /**
+     * Forms the heap by calling the heapify function many times.
+     */
     public void buildHeap() {
         for (int index = (size / 2); index >= 1; index--) {
-            fixPosition(index);
+            heapify(index);
         }
     }
 
-    private void fixPosition(int index) {
+    /**
+     * The heapify function.
+     */
+    private void heapify(int index) {
         int left = getChildFromLeft(index);
         int right = getChildFromRight(index);
         int smallest;
-        if(right <= size) {                                      
-            if(heap[left].getLength() > heap[right].getLength()) {
+        if (right <= size) {
+            if (heap[left].getLength() > heap[right].getLength()) {
                 smallest = right;
             } else {
                 smallest = left;
             }
-            if(heap[index].getLength() > heap[smallest].getLength()) {
+            if (heap[index].getLength() > heap[smallest].getLength()) {
                 swap(index, smallest);
-                fixPosition(smallest);
+                heapify(smallest);
             }
-        } else if(left == size && heap[index].getLength() > heap[left].getLength()) {
+        } else if (left == size && heap[index].getLength() > heap[left].getLength()) {
             swap(index, left);
         }
     }
 
+    /**
+     * Swaps the place of two elements of the heap.
+     */
     public void swap(int indexA, int indexB) {
         Edge e = heap[indexA];
         heap[indexA] = heap[indexB];
         heap[indexB] = e;
     }
 
+    /**
+     * Adds a new element to the heap.
+     */
     public void add(Edge newEdge) {
         size++;
         heap[size] = newEdge;
@@ -52,7 +66,7 @@ public class EdgeHeap {
         if (current == 1) {
             return;
         }
-        
+
         while (heap[current].getLength() < heap[getParent(current)].getLength()) {
             swap(current, getParent(current));
             current = getParent(current);
@@ -61,7 +75,10 @@ public class EdgeHeap {
             }
         }
     }
-    
+
+    /**
+     * Checks if the heap contains a specific edge.
+     */
     public boolean contains(Edge edge) {
         for (int i = 1; i <= size; i++) {
             if (heap[i].getStart() == edge.getStart() && heap[i].getEnd() == edge.getEnd() && heap[i].getLength() == edge.getLength()) {
@@ -74,16 +91,28 @@ public class EdgeHeap {
         return false;
     }
 
+    /**
+     * Returns the smallest edge in the heap while leaving it to the heap.
+     */
     public Edge peek() {
+        if(size < 1) {
+            return null;
+        }
         return heap[1];
     }
 
+    /**
+     * Takes the smallest edge from the heap without returning it.
+     */
     public Edge poll() {
+        if(size < 1) {
+            return null;
+        } 
         Edge polled = heap[1];
         heap[1] = heap[size];
         heap[size] = null;
         size--;
-        fixPosition(1);
+        heapify(1);
         return polled;
     }
 

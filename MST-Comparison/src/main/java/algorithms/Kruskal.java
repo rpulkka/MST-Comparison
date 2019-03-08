@@ -11,13 +11,19 @@ import data_structures.UnionFind;
 public class Kruskal {
 
     private UnionFind unionFind;
-    //private PriorityQueue<Edge> edges = new PriorityQueue<Edge>();
     private EdgeHeap edges = new EdgeHeap(99999999);
 
     public Kruskal(int maxVertice) {
         unionFind = new UnionFind(maxVertice);
     }
 
+    /**
+     * Executes the Kruskal's algorithm.
+     * 
+     * @param graphData Data source.
+     * @see #initEdges(data_management.GraphData) 
+     * @return Returns the sum of edges of the minimum spanning tree.
+     */
     public int execute(GraphData graphData) {
         if (graphData.getNumberOfVertices() == 0) {
             return 0;
@@ -28,6 +34,7 @@ public class Kruskal {
         int sumOfEdges = 0;
         while (!edges.isEmpty()) {
             Edge edge = edges.poll();
+            
             //Check if the polled edge only connects two vertices which are
             //already included in the tree. If yes, discard it, else the 
             //new vertex will be added to the tree and the sum will be 
@@ -42,6 +49,11 @@ public class Kruskal {
         return sumOfEdges;
     }
 
+    /**
+     * Adds all of the edges to the EdgeHeap from the GraphData.
+     *
+     * @param graphData The data source.
+     */
     public void initEdges(GraphData graphData) {
         //Add every edge to the priority queue
         for (int i = 0; i < graphData.getCounter(); i++) {

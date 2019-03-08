@@ -1,15 +1,18 @@
-
 package data_structures;
 
+/**
+ * The array list data structure for integers.
+ */
 public class IntegerList {
+
     private int[] array;
     private int size;
-    
+
     public IntegerList() {
         array = new int[10];
         size = 0;
     }
-    
+
     public void add(int integer) {
         if (size == array.length) {
             int[] copy = new int[size * 2];
@@ -21,24 +24,24 @@ public class IntegerList {
         array[size] = integer;
         size++;
     }
-    
+
     public int get(int i) {
-        if(i >= 0 && i < size) {
+        if (i >= 0 && i < size) {
             return array[i];
         } else {
             throw new IndexOutOfBoundsException("Index: " + i);
         }
     }
-    
+
     public boolean contains(int i) {
-        for(int j = 0; j < size; j++) {
-            if(array[j] == i) {
+        for (int j = 0; j < size; j++) {
+            if (array[j] == i) {
                 return true;
             }
         }
         return false;
     }
-    
+
     public int size() {
         return size;
     }

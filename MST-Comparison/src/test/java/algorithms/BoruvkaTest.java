@@ -4,7 +4,7 @@ package algorithms;
 import data_management.FileHandler;
 import data_management.GraphData;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,8 +26,8 @@ public class BoruvkaTest {
     @Test
     public void emptyGraphEqualsZero() throws IOException {
         graphData = new GraphData(new int[0], new int[0], new int[0]);
-        URL url = getClass().getResource("/emptyGraph.csv");
-        reader.readFile(url.getPath(), graphData);
+        InputStream stream = getClass().getResourceAsStream("/emptyGraph.csv");
+        reader.readFile(stream, graphData);
         boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
         int result = boruvka.execute(graphData);
         assertEquals(result, 0);
@@ -36,8 +36,8 @@ public class BoruvkaTest {
     @Test
     public void singleEdgeTest() throws IOException {
         graphData = new GraphData(new int[1], new int[1], new int[1]);
-        URL url = getClass().getResource("/singleEdge.csv");
-        reader.readFile(url.getPath(), graphData);
+        InputStream stream = getClass().getResourceAsStream("/singleEdge.csv");
+        reader.readFile(stream, graphData);
         boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
         int result = boruvka.execute(graphData);
         assertEquals(result, 5);
@@ -46,8 +46,8 @@ public class BoruvkaTest {
     @Test
     public void mstOfMstEqualsSum() throws IOException {
         graphData = new GraphData(new int[3], new int[3], new int[3]);
-        URL url = getClass().getResource("/preMadeMST.csv");
-        reader.readFile(url.getPath(), graphData);
+        InputStream stream = getClass().getResourceAsStream("/preMadeMST.csv");
+        reader.readFile(stream, graphData);
         boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
         int result = boruvka.execute(graphData);
         assertEquals(result, 30);
@@ -56,8 +56,8 @@ public class BoruvkaTest {
     @Test
     public void simpleTest1() throws IOException {
         graphData = new GraphData(new int[30], new int[30], new int[30]);
-        URL url = getClass().getResource("/simpleTest1.csv");
-        reader.readFile(url.getPath(), graphData);
+        InputStream stream = getClass().getResourceAsStream("/simpleTest1.csv");
+        reader.readFile(stream, graphData);
         boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
         int result = boruvka.execute(graphData);
         assertEquals(result, 33);
@@ -66,28 +66,18 @@ public class BoruvkaTest {
     @Test
     public void simpleTest2() throws IOException {
         graphData = new GraphData(new int[30], new int[30], new int[30]);
-        URL url = getClass().getResource("/simpleTest2.csv");
-        reader.readFile(url.getPath(), graphData);
+        InputStream stream = getClass().getResourceAsStream("/simpleTest2.csv");
+        reader.readFile(stream, graphData);
         boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
         int result = boruvka.execute(graphData);
         assertEquals(result, 27);
     }
     
     @Test
-    public void nonConnectedVertexTest() throws IOException {
-        graphData = new GraphData(new int[50], new int[50], new int[50]);
-        URL url = getClass().getResource("/nonConnectedVertex.csv");
-        reader.readFile(url.getPath(), graphData);
-        boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
-        int result = boruvka.execute(graphData);
-        assertEquals(result, 31);
-    }
-    
-    @Test
     public void overlappingEdgesTest() throws IOException {
         graphData = new GraphData(new int[50], new int[50], new int[50]);
-        URL url = getClass().getResource("/overlappingEdges.csv");
-        reader.readFile(url.getPath(), graphData);
+        InputStream stream = getClass().getResourceAsStream("/overlappingEdges.csv");
+        reader.readFile(stream, graphData);
         boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
         int result = boruvka.execute(graphData);
         assertEquals(result, 14);
@@ -96,60 +86,10 @@ public class BoruvkaTest {
     @Test
     public void identicalEdgesTest() throws IOException {
         graphData = new GraphData(new int[50], new int[50], new int[50]);
-        URL url = getClass().getResource("/twoIdenticalEdges.csv");
-        reader.readFile(url.getPath(), graphData);
+        InputStream stream = getClass().getResourceAsStream("/twoIdenticalEdges.csv");
+        reader.readFile(stream, graphData);
         boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
         int result = boruvka.execute(graphData);
         assertEquals(result, 14);
-    }
-    
-    @Test
-    public void largeTest1() throws IOException {
-        graphData = new GraphData(new int[9999999], new int[9999999], new int[9999999]);
-        URL url = getClass().getResource("/largeTest1.csv");
-        reader.readFile(url.getPath(), graphData);
-        boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
-        int result = boruvka.execute(graphData);
-        assertEquals(result, 48115963);
-    }
-    
-    @Test
-    public void largeTest2() throws IOException {
-        graphData = new GraphData(new int[9999999], new int[9999999], new int[9999999]);
-        URL url = getClass().getResource("/largeTest2.csv");
-        reader.readFile(url.getPath(), graphData);
-        boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
-        int result = boruvka.execute(graphData);
-        assertEquals(result, 47871438);
-    }
-    
-    @Test
-    public void largeTest3() throws IOException {
-        graphData = new GraphData(new int[9999999], new int[9999999], new int[9999999]);
-        URL url = getClass().getResource("/largeTest3.csv");
-        reader.readFile(url.getPath(), graphData);
-        boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
-        int result = boruvka.execute(graphData);
-        assertEquals(result, 48037916);
-    }
-    
-    @Test
-    public void largeTest4() throws IOException {
-        graphData = new GraphData(new int[9999999], new int[9999999], new int[9999999]);
-        URL url = getClass().getResource("/largeTest4.csv");
-        reader.readFile(url.getPath(), graphData);
-        boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
-        int result = boruvka.execute(graphData);
-        assertEquals(result, 48118534);
-    }
-    
-    @Test
-    public void largeTest5() throws IOException {
-        graphData = new GraphData(new int[9999999], new int[9999999], new int[9999999]);
-        URL url = getClass().getResource("/largeTest5.csv");
-        reader.readFile(url.getPath(), graphData);
-        boruvka = new Boruvka(graphData.getMaxVertice(), graphData.getNumberOfEdges());
-        int result = boruvka.execute(graphData);
-        assertEquals(result, 48029485);
     }
 }
