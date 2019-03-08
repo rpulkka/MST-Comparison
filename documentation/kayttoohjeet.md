@@ -5,7 +5,7 @@
 Lataa .jar tiedosto Release kohdasta. Käynnistä .jar komennolla 'java -jar MST_Comparison.jar'. Voit myös kloonata repon ja 
 käynnistää ohjelman NetBeansista.
 
-<h2>Käyttötarkoitukset<h2>
+<h2>Käyttötarkoitukset</h2>
 
 Vaihtoehto 1 suorittaa valitsemasi testitiedoston kerran. Kirjoita tiedoston nimi muodossa nimi.csv . Valittavat tiedostot näkyvät
 kansiossa src/main/resources. Jos haluat lisätä sinne oman tiedostosi, ainoa mahdollisuus ajaa se on avata ohjelma NetBeansin 
