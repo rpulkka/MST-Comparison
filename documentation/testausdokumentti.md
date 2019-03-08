@@ -50,17 +50,31 @@ diagrammeista. Käytän seuraavia lyhenteitä: V = solmujen lukumäärä, E = ka
 <p/>
 largeTest1.csv (V = 20 000, E, 100 000, L = 20 000)
 <p/>
+
 ![GitHub Logo](images/largeTest1.png)
+
 <p/>
 largeTest2.csv (V = 10 000, E, 100 000, L = 500)
 <p/>
+
 ![GitHub Logo](images/largeTest2.png)
+
 <p/>
 largeTest3.csv (V = 9000, E, 90 000, L = 900)
 <p/>
+
 ![GitHub Logo](images/largeTest3.png)
+
 <p/>
 largeTest4.csv (V = 10000, E, 100000, L = 10)
 <p/>
+
 ![GitHub Logo](images/largeTest4.png)
-<p/>
+
+<h3>Tulokset</h3>
+
+Tuloksista voidaan havaita, että Primin algoritmi on lähes poikkeuksetta nopein. Kruskalin algoritmi häviää sille tosin hyvin
+vähän, se on keskimäärin yleensä noin kaksi kertaa hitaampi. Boruvkan algoritmi on puolestaan usein satoja kertoja hitaampi,
+mutta tämänkin voisi mahdollisesti kuitata "vakiokertoimena". Boruvka on odotetustikin hitain, koska en löytänyt siihen 
+juurikaan ohjeita, joten toteutin sen tavalla, jolla sen ymmärsin algoritmin kuvauksesta. Uskon, että Boruvkan algoritmi voisi
+optimoituna päästä lähelle muita algoritmeja, mutta on epätodennäköistä, että se kuitenkaan olisi niitä nopeampi.
