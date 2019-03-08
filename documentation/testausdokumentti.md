@@ -70,3 +70,11 @@ largeTest4.csv (V = 10000, E, 100000, L = 10)
 <p/>
 
 ![GitHub Logo](images/largeTest4.png)
+
+<h3>Tulokset</h3>
+
+Tuloksista voidaan havaita, että Primin algoritmi on lähes poikkeuksetta nopein. Kruskalin algoritmi häviää sille tosin hyvin
+vähän, se on keskimäärin yleensä noin kaksi kertaa hitaampi. Boruvkan algoritmi on puolestaan usein satoja kertoja hitaampi,
+mutta tämänkin voisi mahdollisesti kuitata "vakiokertoimena". Boruvka on odotetustikin hitain, koska en löytänyt siihen 
+juurikaan ohjeita, joten toteutin sen tavalla, jolla sen ymmärsin algoritmin kuvauksesta. Uskon, että Boruvkan algoritmi voisi
+optimoituna päästä lähelle muita algoritmeja, mutta on epätodennäköistä, että se kuitenkaan olisi niitä nopeampi.
