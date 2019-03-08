@@ -38,7 +38,7 @@ mutta toki on olemassa myös vaihtoehtoisia tapoja esim. komentorivin kautta.
 <p/>
 <p/>
 
-<h2> Suorituskykytestit <h2>
+<h2> Suorituskykytestit </h2>
 
 Ensiksi todettakoon, että voit itse kokeilla suorituskyvyn testaamista ohjelman tarjoaman PerformanceTester -luokan ansiosta.
 Lue käyttöohjeet, jos aiot kokeilla (tai päättele itse).
