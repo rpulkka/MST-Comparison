@@ -24,18 +24,23 @@ Alla on luokkakaavio projektin paketeista ja sen lisäksi luokkakaaviot projekti
 yksi luokka.
 <p/>
 Packages:
+
 ![GitHub Logo](images/packagediagram.png)
 <p/>
 Algorithms package:
+
 ![GitHub Logo](images/algorithms.png)
 <p/>
 Components package:
+
 ![GitHub Logo](images/components.png)
 <p/>
 Data Management package:
+
 ![GitHub Logo](images/data_management.png)
 <p/>
 Data Structures package:
+
 ![GitHub Logo](images/data_structures.png)
 <p/>
 <p/>
