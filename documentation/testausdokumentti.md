@@ -50,17 +50,23 @@ diagrammeista. Käytän seuraavia lyhenteitä: V = solmujen lukumäärä, E = ka
 <p/>
 largeTest1.csv (V = 20 000, E, 100 000, L = 20 000)
 <p/>
+
 ![GitHub Logo](images/largeTest1.png)
+
 <p/>
 largeTest2.csv (V = 10 000, E, 100 000, L = 500)
 <p/>
+
 ![GitHub Logo](images/largeTest2.png)
+
 <p/>
 largeTest3.csv (V = 9000, E, 90 000, L = 900)
 <p/>
+
 ![GitHub Logo](images/largeTest3.png)
+
 <p/>
 largeTest4.csv (V = 10000, E, 100000, L = 10)
 <p/>
+
 ![GitHub Logo](images/largeTest4.png)
-<p/>
