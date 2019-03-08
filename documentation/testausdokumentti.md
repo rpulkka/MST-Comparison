@@ -56,15 +56,15 @@ largeTest2.csv (V = 10 000, E, 100 000, L = 500)
 <p/>
 ![GitHub Logo](images/largeTest2.png)
 <p/>
-largeTest3.csv (V = 500, E, 10 000, L = 500)
+largeTest3.csv (V = 9000, E, 90 000, L = 900)
 <p/>
 ![GitHub Logo](images/largeTest3.png)
 <p/>
-largeTest4.csv (V = 9000, E, 90 000, L = 900)
+largeTest4.csv (V = 35000, E, 100000, L = 50)
 <p/>
 ![GitHub Logo](images/largeTest4.png)
 <p/>
-largeTest5.csv (V = 35000, E, 100000, L = 50)
+largeTest5.csv (V = 10000, E, 100000, L = 10)
 <p/>
 ![GitHub Logo](images/largeTest5.png)
 <p/>
