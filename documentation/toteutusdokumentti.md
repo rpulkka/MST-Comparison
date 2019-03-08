@@ -73,7 +73,7 @@ millisekunteina suorituskykytesteissä.
 <p/>
 <p/>
 
-<h2>Työn puutteet<h2>
+<h2>Työn puutteet</h2>
   
 Ohjelman ehkä ikävin piirre on se, että jos yrittää luoda liian suuren verkon, ohjelma kaatuu, koska aiheutuu outOfMemoryError.
 Raja tulee vastaan jo kiusallisen varhain, kun siirrytään syötteisiin, jotka ovat noin 100000 solmun/kaaren pituisia. Epäilen
