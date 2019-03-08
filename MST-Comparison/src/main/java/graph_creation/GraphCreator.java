@@ -22,7 +22,7 @@ public class GraphCreator {
         for (int i = 0; i < numberOfEdges; i++) {
             int randomSource = (int) generateRandomNumber(numberOfVertices);
             int randomDestination = randomSource;
-            //Ensures that edge doesn't start and end to the same vertex.
+            //Ensures that edge doesn't start and end to the same vertex
             while (randomDestination == randomSource) {
                 randomDestination = (int) generateRandomNumber(numberOfVertices);
             }
