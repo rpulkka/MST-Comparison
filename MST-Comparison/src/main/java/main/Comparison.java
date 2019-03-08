@@ -208,8 +208,6 @@ public class Comparison {
      * @see #idle()
      */
     public static void execute() throws URISyntaxException, IOException {
-        System.out.println(maxVertice);
-        System.out.println(numberOfEdges);
         System.out.println("");
         System.out.println("Results");
         System.out.println("");
